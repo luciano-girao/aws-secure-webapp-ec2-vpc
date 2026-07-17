@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AWS Secure WebApp | EC2 inside VPC</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #0d1117;
+      color: #e6edf3;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .container {
+      max-width: 900px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .badge-aws {
+      display: inline-block;
+      background: #ff9900;
+      color: #000;
+      font-size: 0.75rem;
+      font-weight: bold;
+      padding: 0.25rem 0.75rem;
+      border-radius: 4px;
+      margin-bottom: 1.5rem;
+      letter-spacing: 1px;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      background: linear-gradient(135deg, #ff9900, #ffcc44);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .subtitle {
+      font-size: 1.1rem;
+      color: #8b949e;
+      margin-bottom: 3rem;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1.25rem;
+      margin-bottom: 3rem;
+    }
+
+    .card {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      padding: 1.5rem 1rem;
+      transition: border-color 0.2s;
+    }
+
+    .card:hover { border-color: #ff9900; }
+
+    .card-icon { font-size: 2rem; margin-bottom: 0.5rem; }
+
+    .card h3 {
+      font-size: 0.9rem;
+      color: #ff9900;
+      margin-bottom: 0.25rem;
+    }
+
+    .card p {
+      font-size: 0.8rem;
+      color: #8b949e;
+    }
+
+    .status-bar {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      padding: 1.5rem 2rem;
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+    }
+
+    .status-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #3fb950;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    .status-text { color: #3fb950; font-weight: 600; font-size: 0.95rem; }
+
+    .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .tag {
+      background: #21262d;
+      border: 1px solid #30363d;
+      border-radius: 20px;
+      padding: 0.3rem 0.85rem;
+      font-size: 0.8rem;
+      color: #8b949e;
+    }
+
+    footer {
+      color: #484f58;
+      font-size: 0.8rem;
+      margin-top: 1rem;
+    }
+
+    footer a { color: #ff9900; text-decoration: none; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="badge-aws">AWS CLOUD</div>
+
+    <h1>AWS Secure WebApp</h1>
+    <p class="subtitle">EC2 inside VPC &mdash; Projeto de Portf&oacute;lio | Luciano Girao</p>
+
+    <div class="status-bar">
+      <div class="status-dot"></div>
+      <span class="status-text">Servidor operacional &mdash; EC2 na AWS</span>
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">&#x1F5A7;</div>
+        <h3>VPC Dedicada</h3>
+        <p>Rede isolada com CIDR 10.0.0.0/16</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">&#x1F6E1;</div>
+        <h3>Security Group</h3>
+        <p>HTTP/HTTPS aberto, SSH restrito por IP</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">&#x1F511;</div>
+        <h3>IAM Role</h3>
+        <p>Principio do menor privilegio aplicado</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">&#x1F4E6;</div>
+        <h3>S3 Privado</h3>
+        <p>Bucket com versioning e acesso bloqueado</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">&#x2699;</div>
+        <h3>Terraform IaC</h3>
+        <p>Infraestrutura 100% reproduzivel</p>
+      </div>
+    </div>
+
+    <div class="tech-stack">
+      <span class="tag">AWS EC2</span>
+      <span class="tag">AWS VPC</span>
+      <span class="tag">AWS IAM</span>
+      <span class="tag">AWS S3</span>
+      <span class="tag">Security Groups</span>
+      <span class="tag">Terraform</span>
+      <span class="tag">Amazon Linux 2023</span>
+      <span class="tag">Apache HTTPD</span>
+    </div>
+
+    <footer>
+      Desenvolvido por <a href="https://github.com/luciano-girao" target="_blank">Luciano Girao</a>
+      &mdash;
+      <a href="https://github.com/luciano-girao/aws-secure-webapp-ec2-vpc" target="_blank">Ver no GitHub</a>
+    </footer>
+  </div>
+</body>
+</html>
