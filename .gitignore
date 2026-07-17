@@ -1,0 +1,63 @@
+# ==============================================================
+# .gitignore - aws-secure-webapp-ec2-vpc
+# ==============================================================
+
+# Terraform
+.terraform/
+.terraform.lock.hcl
+terraform.tfstate
+terraform.tfstate.backup
+terraform.tfvars
+*.tfvars
+crash.log
+crash.*.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# IMPORTANTE: nunca versione arquivos com credenciais!
+# terraform.tfvars pode conter senhas ou chaves - mantenha no .gitignore
+
+# Chaves SSH
+*.pem
+*.ppk
+*.key
+
+# AWS Credentials
+.aws/
+credentials
+
+# Variaveis de ambiente com dados sensiveis
+.env
+.env.local
+.env.*.local
+
+# Editores e IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Linux
+*~
+
+# Logs
+*.log
+logs/
+
+# Dependencias e artefatos locais
+node_modules/
+dist/
+build/
